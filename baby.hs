@@ -12,5 +12,4 @@ length' xs = sum [1 | _ <- xs]
 
 findEven xxs = [[x | x<- xs ,even x]|xs <- xxs]
 
-rightTriangles' = [(a,b,c) | a <- [1..10],b <- [1..10],c <- [1..10],a^2 +
-b^2 == c^2, a+b+c == 24]
+rightTriangles' = [(a,b,c) | a <- [1..10],b <- [1..10],c <- [1..10],a^2 + b^2 == c^2, a+b+c == 24]

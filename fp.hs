@@ -38,3 +38,9 @@ roadStep (pathA,pathB) (Section a b c) =
  roadStep ([], []) (head heathrowToLondon) 
  ([(C,30),(B,10)],[(B,10)]) 
 --}
+optimalPath :: RoadSystem -> path
+optimalPath roadSystem =
+    let (bestAPath,bestBpath) = foldl roadStep ([],[]) roadSystem
+    in if sum (map snd bestAPath) <= sum (map snd bestBpath)
+            then reverse bestAPath
+            else reverse bestAPath

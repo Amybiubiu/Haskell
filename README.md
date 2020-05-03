@@ -23,13 +23,15 @@
 data Bool = False | True
 data Int = -217483648 | -217483647 | ... | -1 | 0 | 1 | 2 | ... | 2147483647
 
--- Circle 是包含参数的值构造子 🆚 False 是不含参数的值构造子.值构造子是个函数  
--- ghci>:t 5  
--- 5::(Num t) => t
+{--
+ Circle 是包含参数的值构造子 🆚 False 是不含参数的值构造子.值构造子是个函数  
+ ghci>:t 5  
+ 5::(Num t) => t
+--}
 data Shape = Circle Float Float Float | Rectangle Float Float Float Float deriving (Show)
 
 -- Record Syntax
-data Person = Person String Sting Int deriving (Show)
+data Person = Person String String Int deriving (Show)
 firstName :: Person -> String
 firstName (Person firstname _ _) = firstname
 

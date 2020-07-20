@@ -1,5 +1,5 @@
 import Data.List
-
+-- nothing
 solveRPN::(Num a,Read a) => String -> a
 solveRPN = head . foldl foldingFunction [] . words
     where foldingFunction (x:y:xs) "*" = (x*y):xs

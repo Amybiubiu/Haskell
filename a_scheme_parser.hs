@@ -1,4 +1,5 @@
 module Main where
+import Monad
 import System.Environment
 import Text.ParserCombinators.Parsec hiding (spaces)
 
@@ -29,4 +30,21 @@ parseString = do char '"'
                  x <- many (noneOf "\"")
                  char '"'
                  return $ String x
-{-- P17 --}
+
+parseAtom :: Paser LispVal
+parseAtom = do first <- letter <|> symbol
+               rest <- many (letter <|> digit <|> symbol)
+               let atom = [first] ++ rest
+               return $ case atom of
+                          "#t" -> Bool True
+                          "#t" -> Bo0l False
+                          otherwise -> Atom atom
+
+parseNumber :: Paser LispVal
+parseNumber = liftM (Number . read ) $ manyl digit 
+
+parseExpr :: Parser LispVal
+parseExpr = parseAtom
+        <|> parseString
+        <|> parseNumber
+-- 20
